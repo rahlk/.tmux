@@ -47,6 +47,17 @@ Development][bhtmux2] by [@bphogan].
 [bhtmux2]: https://pragprog.com/book/bhtmux2/tmux-2
 [@bphogan]: https://twitter.com/bphogan
 
+Autostart TMUX on opening shell
+-------------------------------
+
+Add the following to the `.rc` file
+
+```bash
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux new-session -A -s main
+fi
+```
+
 Troubleshooting
 ---------------
 
