@@ -340,7 +340,7 @@ tmux_conf_theme_clock_style="24"
 #   - disabled
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel, xclip or wl-copy
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
@@ -370,6 +370,10 @@ set -g mouse on
 # move status line to top
 #set -g status-position top
 
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
 
 # -- tpm -----------------------------------------------------------------------
 
@@ -460,3 +464,6 @@ bind -n M-V select-layout even-horizontal
 # Hot reload source
 unbind r
 bind r source-file ~/.tmux.conf
+
+# Broadcast inputs (prefix then Ctrl x)
+bind -n C-x setw synchronize-panes
